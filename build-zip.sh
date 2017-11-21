@@ -23,5 +23,7 @@ cd ..
 mv kafka-manager/target/universal/kafka-manager-${version}.zip ./
 rm -rf kafka-manager
 
+md5sum kafka-manager-${version}.zip
+
 echo "done! you got "kafka-manager-${version}.zip
 
