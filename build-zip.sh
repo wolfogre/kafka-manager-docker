@@ -9,7 +9,7 @@ fi
 
 version=$1
 
-sudo yum install -y java-1.8.0-openjdk-devel which unzip
+sudo yum install -y java-1.8.0-openjdk-devel
 
 curl https://codeload.github.com/yahoo/kafka-manager/tar.gz/${version} -o kafka-manager.tar.gz
 tar -xzvf kafka-manager.tar.gz
