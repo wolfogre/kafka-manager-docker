@@ -5,14 +5,13 @@ RUN yum install -y java-1.8.0-openjdk-devel which unzip && \
 
 ARG version=1.3.3.17
 
-RUN begintime=`date +%s` && \
-    cd /opt && \
+RUN cd /opt && \
     curl -sSL https://codeload.github.com/yahoo/kafka-manager/tar.gz/${version} -o kafka-manager.tar.gz && \
     tar -xzvf kafka-manager.tar.gz && \
     mv kafka-manager-${version} kafka-manager && \
     rm -f kafka-manager.tar.gz && \
     cd kafka-manager && \
-    yes r | ./sbt clean dist -v && \
+    ./sbt clean dist && \
     rm -rf ~/.ivy2 ~/.pki ~/.sbt && \
     cd /opt && \
     mv kafka-manager/target/universal/kafka-manager-${version}.zip ./ && \
@@ -20,9 +19,7 @@ RUN begintime=`date +%s` && \
     rm -rf kafka-manager && \
     mv kafka-manager-${version} kafka-manager && \
     ls -l -h kafka-manager-${version}.zip && \
-    md5sum kafka-manager-${version}.zip && \
-    endtime=`date +%s` && \
-    echo "cost $[ (endtime - begintime) / 60 ] min"
+    md5sum kafka-manager-${version}.zip
 
 WORKDIR /opt/kafka-manager
 
