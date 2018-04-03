@@ -12,7 +12,7 @@ RUN begintime=`date +%s` && \
     mv kafka-manager-${version} kafka-manager && \
     rm -f kafka-manager.tar.gz && \
     cd kafka-manager && \
-    ./sbt clean dist -v && \
+    yes r | ./sbt clean dist -v && \
     rm -rf ~/.ivy2 ~/.pki ~/.sbt && \
     cd /opt && \
     mv kafka-manager/target/universal/kafka-manager-${version}.zip ./ && \
