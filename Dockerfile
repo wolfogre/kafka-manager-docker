@@ -3,7 +3,7 @@ FROM centos:7
 RUN yum install -y java-1.8.0-openjdk-devel which unzip && \
     yum clean all && rm -rf /var/cache/yum
 
-ARG version=1.3.3.16
+ARG version=1.3.3.17
 
 RUN begintime=`date +%s` && \
     cd /opt && \
