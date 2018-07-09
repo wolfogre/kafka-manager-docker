@@ -12,7 +12,7 @@ RUN cd /opt && \
     mv kafka-manager-${version} kafka-manager && \
     rm -f kafka-manager.tar.gz && \
     cd kafka-manager && \
-    while [[ -z $(./sbt clean dist && echo "ok") ]]; do echo "retry sbt"; done && \
+    while [[ -z $(yes r | ./sbt clean dist 1>&2 && echo "ok") ]]; do echo "retry sbt"; done && \
     rm -rf ~/.ivy2 ~/.pki ~/.sbt && \
     cd /opt && \
     mv kafka-manager/target/universal/kafka-manager-${version}.zip ./ && \
