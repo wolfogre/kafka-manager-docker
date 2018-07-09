@@ -12,17 +12,10 @@ RUN cd /opt && \
     mv kafka-manager-${version} kafka-manager && \
     rm -f kafka-manager.tar.gz && \
     cd kafka-manager && \
-    yes r | ./sbt clean dist && \
+    while [[ -z $(./sbt clean dist && echo "ok") ]]; do echo "retry sbt"; done && \
     rm -rf ~/.ivy2 ~/.pki ~/.sbt && \
     cd /opt && \
     mv kafka-manager/target/universal/kafka-manager-${version}.zip ./ && \
-    unzip kafka-manager-${version}.zip && \
     rm -rf kafka-manager && \
-    mv kafka-manager-${version} kafka-manager && \
     ls -l -h kafka-manager-${version}.zip && \
     md5sum kafka-manager-${version}.zip
-
-WORKDIR /opt/kafka-manager
-
-ENTRYPOINT ["bin/kafka-manager"]
-    
