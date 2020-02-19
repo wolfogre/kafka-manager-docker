@@ -7,7 +7,7 @@ RUN yum install -y -q epel-release && \
 ARG version=2.0.0.2
 
 RUN cd /opt && \
-    curl -sSL https://codeload.github.com/yahoo/kafka-manager/tar.gz/${version} -o kafka-manager.tar.gz && \
+    curl -sSL https://codeload.github.com/yahoo/CMAK/tar.gz/${version} -o kafka-manager.tar.gz && \
     tar -xzf kafka-manager.tar.gz && \
     mv kafka-manager-${version} kafka-manager && \
     rm -f kafka-manager.tar.gz && \
