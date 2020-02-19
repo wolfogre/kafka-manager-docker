@@ -7,15 +7,15 @@ RUN yum install -y -q epel-release && \
 ARG version=2.0.0.2
 
 RUN cd /opt && \
-    curl -sSL https://codeload.github.com/yahoo/CMAK/tar.gz/${version} -o kafka-manager.tar.gz && \
-    tar -xzf kafka-manager.tar.gz && \
-    mv kafka-manager-${version} kafka-manager && \
-    rm -f kafka-manager.tar.gz && \
-    cd kafka-manager && \
+    curl -sSL https://codeload.github.com/yahoo/CMAK/tar.gz/${version} -o CMAK.tar.gz && \
+    tar -xzf CMAK.tar.gz && \
+    mv CMAK-${version} CMAK && \
+    rm -f CMAK.tar.gz && \
+    cd CMAK && \
     while [[ -z $(yes r | ./sbt clean dist 1>&2 && echo "ok") ]]; do echo "retry sbt"; done && \
     rm -rf ~/.ivy2 ~/.pki ~/.sbt && \
     cd /opt && \
-    mv kafka-manager/target/universal/kafka-manager-${version}.zip ./ && \
-    rm -rf kafka-manager && \
-    ls -l -h kafka-manager-${version}.zip && \
-    md5sum kafka-manager-${version}.zip
+    mv CMAK/target/universal/CMAK-${version}.zip ./ && \
+    rm -rf CMAK && \
+    ls -l -h CMAK-${version}.zip && \
+    md5sum CMAK-${version}.zip
