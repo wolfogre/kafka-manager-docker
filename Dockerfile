@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN yum install -y -q epel-release && \
-    yum install -y -q java-1.8.0-openjdk-devel which unzip nodejs && \
+    yum install -y -q java-11-openjdk-devel which unzip nodejs && \
     yum clean all && rm -rf /var/cache/yum
 
 ARG version=3.0.0.0
