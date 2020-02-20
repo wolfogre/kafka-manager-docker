@@ -4,7 +4,7 @@ RUN yum install -y -q epel-release && \
     yum install -y -q java-11-openjdk-devel which unzip nodejs && \
     yum clean all && rm -rf /var/cache/yum
 
-ARG version=3.0.0.0
+ARG version=3.0.0.1
 
 RUN cd /opt && \
     curl -sSL https://codeload.github.com/yahoo/CMAK/tar.gz/${version} -o CMAK.tar.gz && \
